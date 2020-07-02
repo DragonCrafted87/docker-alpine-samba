@@ -18,11 +18,9 @@ RUN apk --no-cache --no-progress upgrade && \
     apk --no-cache --no-progress add samba shadow && \
     addgroup -S smb && \
     adduser -S -D -H -h /tmp -s /sbin/nologin -G smb -g 'Samba User' smbuser && \
-    rm -rf /var/cache/apk/*
-
-# Create symbolic links for the config data
-RUN rm -rf /var/lib/samba && \
-    ln -s /mnt/config/var_lib_samba /var/lib/samba
+    rm -rf /var/cache/apk/* && \
+    chmod +x /docker_service_init && \
+    chmod +x /scripts/*
 
 EXPOSE 137/udp 138/udp 139 445
 
