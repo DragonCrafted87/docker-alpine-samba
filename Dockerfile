@@ -19,8 +19,7 @@ RUN apk --no-cache --no-progress upgrade && \
     addgroup -S smb && \
     adduser -S -D -H -h /tmp -s /sbin/nologin -G smb -g 'Samba User' smbuser && \
     rm -rf /var/cache/apk/* && \
-    chmod +x /docker_service_init && \
-    chmod +x /scripts/*
+    chmod +x -R /scripts/*
 
 EXPOSE 137/udp 138/udp 139 445
 
